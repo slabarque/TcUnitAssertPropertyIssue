@@ -21,6 +21,7 @@ VAR
     ExpectedSum : UINT := 4;
 	
 	ExpectedProp : BOOL;
+	ActualProp: BOOL;
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[TEST('TwoPlusTwoEqualsFour');
@@ -31,9 +32,9 @@ AssertEquals(Expected := ExpectedSum,
              Actual := Result,
              Message := 'The calculation is not correct');
 			 
-//This line of code makes my pc crash, I mean crash HARD! As in Blue-Screen-Of-Death crash...
+ActualProp := Sum.Prop;
 AssertEquals(Expected := ExpectedProp,
-             Actual := Sum.Prop,
+             Actual := ActualProp,
              Message := 'Testing prop');			 
  
 TEST_FINISHED();]]></ST>
