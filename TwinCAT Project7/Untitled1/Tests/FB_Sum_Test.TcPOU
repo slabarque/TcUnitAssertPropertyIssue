@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Sum_Test" Id="{abfc6be1-3baf-4283-9266-181748260e6f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Sum_Test EXTENDS TcUnit.FB_TestSuite
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[TwoPlusTwoEqualsFour();
+ZeroPlusZeroEqualsZero();]]></ST>
+    </Implementation>
+    <Method Name="TwoPlusTwoEqualsFour" Id="{97cf3e48-0ba0-43da-b044-2ce83d5a63c9}">
+      <Declaration><![CDATA[METHOD TwoPlusTwoEqualsFour
+VAR
+    Sum : FB_Sum;
+    Result : UINT;
+    ExpectedSum : UINT := 4;
+	
+	ExpectedProp : BOOL;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('TwoPlusTwoEqualsFour');
+ 
+Sum(one := 2, two := 2, result => Result);
+ 
+AssertEquals(Expected := ExpectedSum,
+             Actual := Result,
+             Message := 'The calculation is not correct');
+			 
+//This line of code makes my pc crash, I mean crash HARD! As in Blue-Screen-Of-Death crash...
+AssertEquals(Expected := ExpectedProp,
+             Actual := Sum.Prop,
+             Message := 'Testing prop');			 
+ 
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ZeroPlusZeroEqualsZero" Id="{a7c1abba-d08b-4929-8a5e-1574e59bd6bd}">
+      <Declaration><![CDATA[METHOD ZeroPlusZeroEqualsZero
+VAR
+    Sum : FB_Sum;
+    Result : UINT;
+    ExpectedSum : UINT := 0;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('ZeroPlusZeroEqualsZero');
+ 
+Sum(one := 0, two := 0, result => Result);
+ 
+AssertEquals(Expected := ExpectedSum,
+             Actual := Result,
+             Message := 'The calculation is not correct');
+ 
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_Sum_Test">
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Sum_Test.TwoPlusTwoEqualsFour">
+      <LineId Id="11" Count="6" />
+      <LineId Id="34" Count="1" />
+      <LineId Id="25" Count="1" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Sum_Test.ZeroPlusZeroEqualsZero">
+      <LineId Id="11" Count="7" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

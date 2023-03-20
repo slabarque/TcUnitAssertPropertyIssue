@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Sum" Id="{5173c1cb-3f1b-4feb-a554-e8293792cdc5}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Sum
+VAR_INPUT
+	one : UINT;
+    two : UINT;
+END_VAR
+VAR_OUTPUT
+    result : UINT;
+END_VAR
+VAR
+	_prop:BOOL:=FALSE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="Prop" Id="{2a6005bf-f31a-4407-98c1-15d61d1ba5ea}">
+      <Declaration><![CDATA[PROPERTY Prop : BOOL]]></Declaration>
+      <Get Name="Get" Id="{30a238ee-ef8c-4c1e-88d2-d2570e70303e}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Prop := _prop;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{256b49a1-362a-4142-9c27-521044afa2d5}">
+        <Declaration><![CDATA[
+VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[_prop:=Prop;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <LineIds Name="FB_Sum">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Sum.Prop.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Sum.Prop.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
